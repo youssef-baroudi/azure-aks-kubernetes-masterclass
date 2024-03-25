@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: acrdemo2ss-vn
-          image: acrdemo2ss.azurecr.io/app3/acr-app3:v1 # Update Image Name 
+          image: demotf001acr552.azurecr.io/app3/acr-app3:v1 # Update Image Name 
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -25,7 +25,7 @@ spec:
 # To schedule pods on Azure Virtual Nodes            
       nodeSelector:
         kubernetes.io/role: agent
-        beta.kubernetes.io/os: linux
+        kubernetes.io/os: linux
         type: virtual-kubelet
       tolerations:
       - key: virtual-kubelet.io/provider
