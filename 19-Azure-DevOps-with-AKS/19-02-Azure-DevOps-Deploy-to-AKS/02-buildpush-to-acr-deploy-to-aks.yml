@@ -14,7 +14,7 @@ variables:
   dockerRegistryServiceConnection: 'service-connection-acr'
   imageRepository: 'app1nginxaks'
   containerRegistry: 'demotf001acr552.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
+  dockerfilePath: '$(Build.SourcesDirectory)/19-Azure-DevOps-with-AKS/19-02-Azure-DevOps-Deploy-to-AKS/Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'aksdevopsacr1755e8d5-auth'
 
