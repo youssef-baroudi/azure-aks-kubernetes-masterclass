@@ -14,7 +14,7 @@ variables:
   dockerRegistryServiceConnection: 'service-connection-acr'
   imageRepository: 'app1nginxaks'
   containerRegistry: 'demotf001acr552.azurecr.io'
-  dockerfilePath: '**/Dockerfile'
+  dockerfilePath: 'Dockerfile'
   tag: '$(Build.BuildId)'
   imagePullSecret: 'aksdevopsacr1755e8d5-auth'
 
@@ -69,8 +69,7 @@ stages:
             inputs:
               action: deploy
               manifests: |
-                $(Pipeline.Workspace)/manifests/deployment.yml
-                $(Pipeline.Workspace)/manifests/service.yml
+                $(Pipeline.Workspace)/kube-manifests/02-Deployment-and-LoadBalancer-Service.yml
               imagePullSecrets: |
                 $(imagePullSecret)
               containers: |
