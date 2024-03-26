@@ -52,6 +52,7 @@ stages:
     pool:
       name: Default
       demands: Agent.OS -equals Linux
+    environment: 'integration'
     strategy:
       runOnce:
         deploy:
