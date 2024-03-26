@@ -52,7 +52,6 @@ stages:
     pool:
       name: Default
       demands: Agent.OS -equals Linux
-    environment: 'stacksimplifyazuredevopsgithubacraksapp1internal-1561.default'
     strategy:
       runOnce:
         deploy:
