@@ -40,9 +40,19 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
-          
-    - upload: manifests
-      artifact: manifests
+    
+    - task: CopyFiles@2
+      displayName: 'Copie Fichiers kube-manifests'
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)/19-Azure-DevOps-with-AKS/19-02-Azure-DevOps-Deploy-to-AKS/kube-manifests'
+        CleanTargetFoler: true
+        TargetFolder: '$(Build.StagingDirectory)'
+
+    - task: PublishBuildArtifacts@1
+      displayName: 'Publish Artifact: kube-manifests'
+      inputs:
+        PathtoPublish: '$(Build.StagingDirectory)'
+        ArtifactName: kube-manifests
 
 - stage: Deploy
   displayName: Deploy stage
