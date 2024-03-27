@@ -35,6 +35,7 @@ stages:
         command: buildAndPush
         repository: $(imageRepository)
         dockerfile: $(dockerfilePath)
+        buildContext: $(Build.SourcesDirectory)/19-Azure-DevOps-with-AKS/
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
