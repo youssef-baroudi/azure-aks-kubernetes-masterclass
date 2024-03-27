@@ -12,7 +12,7 @@ variables:
 
   # Container registry service connection established during pipeline creation
   dockerRegistryServiceConnection: 'service-connection-acr'
-  #aksServiceConnection: 'service-connection-acr-aks'
+  aksServiceConnection: 'service-connection-acr-aks'
   imageRepository: 'app1nginxaks'
   containerRegistry: 'demotf001acr552.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/19-Azure-DevOps-with-AKS/19-02-Azure-DevOps-Deploy-to-AKS/Dockerfile'
@@ -73,6 +73,8 @@ stages:
             displayName: Create imagePullSecret
             inputs:
               action: createSecret
+              kubernetesServiceConnection: $(aksServiceConnection)
+              namespace: 'default'
               secretName: $(imagePullSecret)
               dockerRegistryEndpoint: $(dockerRegistryServiceConnection)
               
